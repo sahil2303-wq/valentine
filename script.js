@@ -18,7 +18,7 @@ function createHearts(count = 30) {
   }
 }
 
-// Heart style
+// Heart CSS dynamically
 const style = document.createElement('style');
 style.innerHTML = `
 .heart {
@@ -53,11 +53,11 @@ function typeWriterEffect() {
   type();
 }
 
-// ---------- SHOW QUESTION ----------
+// ---------- SHOW PROPOSAL ----------
 function showQuestion() {
-  // Start music
+  // Start music on click
   if (!audio) {
-    audio = new Audio("song1.mp3"); // make sure this file is in root
+    audio = new Audio("song1.mp3"); // make sure this file is in root folder
     audio.loop = true;
     audio.play();
   }
@@ -69,30 +69,23 @@ function showQuestion() {
   const proposal = document.getElementById("proposal");
   proposal.classList.remove("hidden");
 
-  // Optional: add overlay behind
-  const overlay = document.createElement("div");
-  overlay.style.position = "fixed";
-  overlay.style.top = 0;
-  overlay.style.left = 0;
-  overlay.style.width = "100%";
-  overlay.style.height = "100%";
-  overlay.style.background = "rgba(0,0,0,0.3)";
-  overlay.style.zIndex = 5;
-  document.body.appendChild(overlay);
+  // Bring proposal above any overlay
+  proposal.style.position = "relative";
+  proposal.style.zIndex = 10;
 
   setupButtons();
 }
 
-// ---------- BUTTON LOGIC ----------
+// ---------- YES / NO BUTTON LOGIC ----------
 function setupButtons() {
   const noBtn = document.getElementById("noBtn");
   const yesBtn = document.getElementById("yesBtn");
   const finalMsg = document.getElementById("finalMsg");
 
-  // NO button runs away
+  // NO button moves away when hovered
   noBtn.addEventListener("mouseover", () => {
-    const x = Math.random() * 300 - 150;
-    const y = Math.random() * 200 - 100;
+    const x = Math.random() * 300 - 150; // random left/right
+    const y = Math.random() * 200 - 100; // random up/down
     noBtn.style.transform = `translate(${x}px, ${y}px)`;
   });
 
