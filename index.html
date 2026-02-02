@@ -36,12 +36,20 @@
 
   <!-- Final question -->
   <section class="valentine">
-    <h2>So I have one question… 💌</h2>
-    <button onclick="showQuestion()">Click here</button>
-    <h1 id="question" class="hidden">
-      Will you be my Valentine? 💖
-    </h1>
-  </section>
+  <h2>So I have one question… 💌</h2>
+  <button onclick="showQuestion()">Click here</button>
+
+  <div id="proposal" class="hidden">
+    <h1 id="question">Will you be my Valentine? 💖</h1>
+    <div class="buttons">
+      <button id="yesBtn">YES 💖</button>
+      <button id="noBtn">NO 🙈</button>
+    </div>
+    <p id="finalMsg" class="hidden">
+      You just made me the happiest person alive ❤️
+    </p>
+  </div>
+</section>
 
   <script src="script.js"></script>
 </body>
