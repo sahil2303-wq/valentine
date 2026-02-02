@@ -40,14 +40,20 @@ document.head.appendChild(style);
 // ---------- TYPEWRITER ----------
 function typeWriterEffect() {
   const note = document.querySelector(".note p");
-  const text = note.innerHTML; // use innerHTML now to keep <br>
+  const text = note.innerText; // get plain text with newlines
   note.innerHTML = "";
   let i = 0;
 
   function type() {
     if (i < text.length) {
       const char = text.charAt(i);
-      note.innerHTML += char; // append HTML directly
+      if (char === "\n") {
+        note.innerHTML += "<br>"; // convert newlines to line breaks
+      } else if (char === " ") {
+        note.innerHTML += "&nbsp;"; // preserve spaces
+      } else {
+        note.innerHTML += char;
+      }
       i++;
       setTimeout(type, 35);
     }
@@ -55,6 +61,7 @@ function typeWriterEffect() {
 
   type();
 }
+
 
 
 // ---------- SHOW PROPOSAL ----------
