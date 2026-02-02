@@ -81,6 +81,6 @@ function showQuestion() {
   }, 1500);
 
   // Optional music
-  const audio = new Audio("music.mp3"); // put your song file in project folder
+  const audio = new Audio("song1.mp3"); // put your song file in project folder
   audio.play();
 }
