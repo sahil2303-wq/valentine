@@ -40,20 +40,14 @@ document.head.appendChild(style);
 // ---------- TYPEWRITER ----------
 function typeWriterEffect() {
   const note = document.querySelector(".note p");
-  const text = note.innerText;
-  note.innerHTML = ""; // use innerHTML
+  const text = note.innerHTML; // use innerHTML now to keep <br>
+  note.innerHTML = "";
   let i = 0;
 
   function type() {
     if (i < text.length) {
       const char = text.charAt(i);
-      if (char === "\n") {
-        note.innerHTML += "<br>";
-      } else if (char === " ") {
-        note.innerHTML += "&nbsp;";
-      } else {
-        note.innerHTML += char;
-      }
+      note.innerHTML += char; // append HTML directly
       i++;
       setTimeout(type, 35);
     }
@@ -61,6 +55,7 @@ function typeWriterEffect() {
 
   type();
 }
+
 
 // ---------- SHOW PROPOSAL ----------
 function showQuestion() {
