@@ -132,3 +132,11 @@ section {
 @keyframes fadeInMsg {
   to { opacity: 1; }
 }
+.note p {
+  font-size: 1.2rem;
+  max-width: 700px;   /* keeps text from expanding too far */
+  margin: auto;
+  line-height: 1.8;
+  word-wrap: break-word;  /* break long words if needed */
+  white-space: pre-wrap;  /* preserve newlines and spaces */
+}
