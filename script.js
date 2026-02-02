@@ -1,6 +1,6 @@
-// Create background hearts
-function createHearts() {
-  for (let i = 0; i < 30; i++) {
+// ---------- HEARTS ----------
+function createHearts(count = 30) {
+  for (let i = 0; i < count; i++) {
     const heart = document.createElement("div");
     heart.innerHTML = "❤";
     heart.className = "heart";
@@ -10,7 +10,7 @@ function createHearts() {
   }
 }
 
-// Add heart styles dynamically
+// Heart styles
 const style = document.createElement('style');
 style.innerHTML = `
 .heart {
@@ -24,20 +24,14 @@ style.innerHTML = `
 }
 
 @keyframes floatUp {
-  from {
-    transform: translateY(0);
-    opacity: 0.7;
-  }
-  to {
-    transform: translateY(-110vh);
-    opacity: 0;
-  }
+  from { transform: translateY(0); opacity: 0.7; }
+  to { transform: translateY(-110vh); opacity: 0; }
 }
 `;
 document.head.appendChild(style);
 
 
-// Typewriter effect for love note
+// ---------- TYPEWRITER ----------
 function typeWriterEffect() {
   const note = document.querySelector(".note p");
   const text = note.innerText;
@@ -55,32 +49,11 @@ function typeWriterEffect() {
 }
 
 
-// Show final question with cinematic effect
+// ---------- MAIN PROPOSAL FLOW ----------
 function showQuestion() {
-  createHearts();
+  createHearts(40);
   typeWriterEffect();
 
   // Dark overlay
   const overlay = document.createElement("div");
-  overlay.style.position = "fixed";
-  overlay.style.top = 0;
-  overlay.style.left = 0;
-  overlay.style.width = "100%";
-  overlay.style.height = "100%";
-  overlay.style.background = "rgba(0,0,0,0.4)";
-  overlay.style.zIndex = 5;
-  document.body.appendChild(overlay);
-
-  // Reveal question slowly
-  setTimeout(() => {
-    const q = document.getElementById("question");
-    q.classList.remove("hidden");
-    q.style.opacity = "1";
-    q.style.position = "relative";
-    q.style.zIndex = "10";
-  }, 1500);
-
-  // Optional music
-  const audio = new Audio("song1.mp3"); // put your song file in project folder
-  audio.play();
-}
+  overlay.style
