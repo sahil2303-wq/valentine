@@ -40,18 +40,28 @@ document.head.appendChild(style);
 // ---------- TYPEWRITER ----------
 function typeWriterEffect() {
   const note = document.querySelector(".note p");
-  const text = note.innerText;
-  note.innerText = "";
+  const text = note.innerText; // get the text from HTML
+  note.innerHTML = ""; // clear content
   let i = 0;
+
   function type() {
     if (i < text.length) {
-      note.innerText += text.charAt(i);
+      const char = text.charAt(i);
+      if (char === "\n") {
+        note.innerHTML += "<br>"; // preserve line breaks
+      } else if (char === " ") {
+        note.innerHTML += "&nbsp;"; // preserve spaces
+      } else {
+        note.innerHTML += char;
+      }
       i++;
       setTimeout(type, 35);
     }
   }
+
   type();
 }
+
 
 // ---------- SHOW PROPOSAL ----------
 function showQuestion() {
