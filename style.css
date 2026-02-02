@@ -102,12 +102,18 @@ section {
 #noBtn { left: 55%; top: 40px; background: #ccc; }
 
 #finalMsg {
-  margin-top: 130px;
-  font-size: 1.6rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
   color: #ff4d6d;
   opacity: 0;
+  z-index: 9999;   /* on top of everything */
+  text-align: center;
   animation: fadeInMsg 1.5s ease forwards;
 }
+
 
 @keyframes fadeInMsg { to { opacity: 1; } }
 
