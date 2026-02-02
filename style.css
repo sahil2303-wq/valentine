@@ -53,11 +53,13 @@ section {
   transform: scale(1.05);
 }
 
-.note {
+.note p {
   font-size: 1.2rem;
   max-width: 700px;
   margin: auto;
   line-height: 1.8;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .valentine button {
@@ -77,18 +79,7 @@ section {
   color: #ff4d6d;
 }
 
-.hidden {
-  display: none;
-}
-
-.gallery img {
-  animation: fadeIn 1s ease forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+.hidden { display: none; }
 
 .buttons {
   margin-top: 30px;
@@ -104,39 +95,46 @@ section {
   border-radius: 30px;
   cursor: pointer;
   transition: transform 0.25s ease;
-}
-
-#yesBtn {
-  background: #ff4d6d;
-  color: white;
-  left: 25%;
-  top: 40px;
   z-index: 11;
 }
 
-#noBtn {
-  background: #ccc;
-  left: 55%;
-  top: 40px;
-  z-index: 11;
-}
+#yesBtn { left: 25%; top: 40px; background: #ff4d6d; color: white; }
+#noBtn { left: 55%; top: 40px; background: #ccc; }
 
 #finalMsg {
-  margin-top: 160px;
+  margin-top: 130px;
   font-size: 1.6rem;
   color: #ff4d6d;
   opacity: 0;
   animation: fadeInMsg 1.5s ease forwards;
 }
 
-@keyframes fadeInMsg {
-  to { opacity: 1; }
+@keyframes fadeInMsg { to { opacity: 1; } }
+
+/* Heart CSS */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 24px;
+  color: #ff4d6d;
+  animation: floatUp linear infinite;
+  opacity: 0.7;
+  pointer-events: none;
 }
-.note p {
-  font-size: 1.2rem;
-  max-width: 700px;   /* keeps text from expanding too far */
-  margin: auto;
-  line-height: 1.8;
-  word-wrap: break-word;  /* break long words if needed */
-  white-space: pre-wrap;  /* preserve newlines and spaces */
+
+@keyframes floatUp {
+  from { transform: translateY(0); opacity: 0.7; }
+  to { transform: translateY(-110vh); opacity: 0; }
+}
+
+/* Confetti CSS */
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  top: 0;
+  pointer-events: none;
+  opacity: 0.9;
+  z-index: 12;
 }
