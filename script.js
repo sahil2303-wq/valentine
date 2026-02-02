@@ -77,27 +77,31 @@ function setupButtons() {
 }
 
 // ---------- CONFETTI ----------
+// ---------- CONFETTI ----------
 function createConfetti(count = 100) {
   for (let i = 0; i < count; i++) {
     const confetti = document.createElement("div");
     confetti.className = "confetti";
     confetti.style.left = Math.random() * window.innerWidth + "px";
     confetti.style.backgroundColor = randomColor();
-    confetti.style.animationDuration = 2 + Math.random() * 3 + "s";
+    confetti.style.width = 8 + Math.random() * 7 + "px";
+    confetti.style.height = 8 + Math.random() * 7 + "px";
+    confetti.style.opacity = 0.9;
+    confetti.style.zIndex = 9999;
     document.body.appendChild(confetti);
 
-    // Animate falling
+    // Animate falling using CSS transform
     confetti.animate([
       { transform: `translateY(0px) rotate(0deg)` },
       { transform: `translateY(${window.innerHeight + 50}px) rotate(${Math.random() * 360}deg)` }
     ], {
-      duration: (2 + Math.random() * 3) * 1000,
+      duration: 2000 + Math.random() * 2000, // 2-4 seconds
       iterations: 1,
       easing: 'linear'
     });
 
-    // Remove after animation
-    setTimeout(() => confetti.remove(), 5000);
+    // Remove after animation ends
+    setTimeout(() => confetti.remove(), 4000);
   }
 }
 
@@ -105,3 +109,4 @@ function randomColor() {
   const colors = ['#ff4d6d','#ff758c','#ffd700','#ff69b4','#ffb6c1','#ff4500'];
   return colors[Math.floor(Math.random() * colors.length)];
 }
+
